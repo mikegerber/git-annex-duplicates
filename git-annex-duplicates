@@ -1,0 +1,42 @@
+#!/usr/bin/python3
+import subprocess
+import collections
+import re
+import click
+
+
+@click.command()
+@click.option("--exclude", multiple=True, default=[])
+@click.argument("arguments", nargs=-1)
+def main(exclude, arguments):
+    # build command
+    find_cmd = ["git", "annex", "find", "--include", "*", "--format=${key}:${file}\n", *arguments]
+    for e in exclude:
+        find_cmd += ["--exclude", e]
+
+    # run
+    result = subprocess.run(find_cmd, capture_output=True)
+
+    files = collections.defaultdict(list)
+    for l in result.stdout.decode("utf-8").split("\n"):
+        if l == "":
+            continue
+        key, file = l.split(":", maxsplit=1)
+
+        # XXX
+        if file.lower().endswith(".jpg"):
+            continue
+        if file.lower().endswith(".nfo"):
+            continue
+
+        files[key].append(file)
+
+    for k in files:
+        if len(files[k]) > 1:
+            for f in files[k]:
+                print(f)
+            print()
+
+
+if __name__ == "__main__":
+    main()
