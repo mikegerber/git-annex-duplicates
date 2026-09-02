@@ -33,7 +33,7 @@ let
 
   src = builtins.fetchGit {
     url = "https://cvs.moegen-wir.net/mikegerber/git-annex-duplicates.git";
-    rev = "fccb0a672dac36d38b5d464848c3447267e39b0c";
+    rev = "1e8ea44ba8fade7ef396f0fbe65262f023138d05";
   };
 
 
