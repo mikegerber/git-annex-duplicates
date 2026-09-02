@@ -12,4 +12,4 @@ dependencies = [
 package = true
 
 [project.scripts]
-git-annex-duplicates = "main:main"
+git-annex-duplicates = "git_annex_duplicates:main"

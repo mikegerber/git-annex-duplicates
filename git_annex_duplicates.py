@@ -29,3 +29,7 @@ def main(exclude, arguments):
             for f in files[k]:
                 print(f)
             print()
+
+
+if __name__ == "__main__":
+    main()
