@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 import subprocess
 import collections
 import re
@@ -30,7 +29,3 @@ def main(exclude, arguments):
             for f in files[k]:
                 print(f)
             print()
-
-
-if __name__ == "__main__":
-    main()
