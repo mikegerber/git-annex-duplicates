@@ -57,19 +57,21 @@ Exclude one or more path patterns with `--exclude`:
 git-annex-duplicates --exclude '*.iso' --exclude 'archive/**'
 ```
 
-Additional arguments are passed to `git annex find`. Place `--` before options
-that belong to `git annex find`, so they are not interpreted as options to
-`git-annex-duplicates`:
+Find duplicates in the given directories:
 
 ```sh
-# Only report duplicates whose content is present in this repository
-git-annex-duplicates -- --in=here
-
-# Combine a local exclusion with a git-annex find option
-git-annex-duplicates --exclude 'archive/**' -- --in=here
+git-annex-duplicates dir_a/ dir_b/
 ```
 
-See `git annex find --help` for the available filters.
+### Finding duplicates across directories
+
+To find duplicates that are duplicated across directories, use the `--across` flag:
+
+```sh
+git-annex-duplicates --across data/ new_data/
+```
+
+This will only list duplicate files that are found in more than one of the given directories.
 
 
 ## How it works
