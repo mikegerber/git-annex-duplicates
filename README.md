@@ -82,3 +82,10 @@ concerned.
 Only annexed files are considered. Regular Git files and untracked files are
 not included, and file content does not need to be downloaded to produce the
 report.
+
+
+## Contributing
+
+This program is almost trivial, so I don't expect many contributions. However,
+if you wish to implement a new feature, please open an issue at GitHub first,
+so we can discuss it.
