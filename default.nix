@@ -31,11 +31,7 @@ let
   };
 
 
-  src = builtins.fetchGit {
-    url = "https://cvs.moegen-wir.net/mikegerber/git-annex-duplicates.git";
-    rev = "1e8ea44ba8fade7ef396f0fbe65262f023138d05";
-  };
-
+  src = lib.cleanSource ./.;
 
   workspace = uv2nix.lib.workspace.loadWorkspace {
     workspaceRoot = src;
