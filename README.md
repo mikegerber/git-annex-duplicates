@@ -1,6 +1,6 @@
 # git-annex-duplicates
 
-Find duplicate file paths in a [git-annex](https://git-annex.branchable.com/)
+Find duplicate files in a [git-annex](https://git-annex.branchable.com/)
 repository.
 
 `git-annex-duplicates` groups files by their annex key and prints every group
@@ -27,8 +27,8 @@ Alternatively, run it from a checkout:
 
 ```sh
 git clone https://cvs.moegen-wir.net/mikegerber/git-annex-duplicates.git
-cd git-annex-duplicates
-uv run git-annex-duplicates --help
+cd /path/to/your-git-annex-repo
+uv run --project /path/to/git-annex-duplicates git-annex-duplicates
 ```
 
 
@@ -40,8 +40,8 @@ Run the command from inside a git-annex repository:
 git-annex-duplicates
 ```
 
-The output contains one group of duplicate paths at a time, with groups
-separated by a blank line:
+This will list any duplicate files below the current working directory. The output contains one
+group of duplicate paths at a time, with groups separated by a blank line:
 
 ```text
 photos/holiday.jpg
