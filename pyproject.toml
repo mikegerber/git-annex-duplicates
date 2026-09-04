@@ -12,5 +12,10 @@ dependencies = [
 [tool.uv]
 package = true
 
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+]
+
 [project.scripts]
 git-annex-duplicates = "git_annex_duplicates:main"
