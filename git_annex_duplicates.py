@@ -20,7 +20,7 @@ def collect_files(exclude, directories):
         find_cmd += ["--exclude", e]
 
     # run
-    result = subprocess.run(find_cmd, capture_output=True)
+    result = subprocess.run(find_cmd, capture_output=True, check=True)
 
     # collect output
     files = collections.defaultdict(list)
