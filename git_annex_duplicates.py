@@ -7,7 +7,15 @@ import click
 
 def collect_files(exclude, directories):
     # build command
-    find_cmd = ["git", "annex", "find", "--include", "*", "--format=${key}:${file}\n", *directories]
+    find_cmd = [
+        "git",
+        "annex",
+        "find",
+        "--include",
+        "*",
+        "--format=${key}:${file}\n",
+        *directories,
+    ]
     for e in exclude:
         find_cmd += ["--exclude", e]
 
@@ -38,7 +46,12 @@ def resolve_parent(p):
 @click.command()
 @click.option("--exclude", multiple=True, default=[])
 @click.option("--across", is_flag=True, default=False)
-@click.argument("directories", nargs=-1, default=["."], type=click.Path(exists=True, file_okay=False, path_type=Path))
+@click.argument(
+    "directories",
+    nargs=-1,
+    default=["."],
+    type=click.Path(exists=True, file_okay=False, path_type=Path),
+)
 def main(exclude, across, directories):
 
     if across and len(directories) < 2:
@@ -59,8 +72,11 @@ def main(exclude, across, directories):
                 count = 0
                 found_across = False
                 for directory in directories:
-                    if any(resolve_parent(Path(f)).is_relative_to(directory) for f in files[k]):
-                       count += 1
+                    if any(
+                        resolve_parent(Path(f)).is_relative_to(directory)
+                        for f in files[k]
+                    ):
+                        count += 1
 
                     if count > 1:
                         found_across = True
