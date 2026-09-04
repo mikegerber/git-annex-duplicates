@@ -7,7 +7,7 @@ repository.
 that contains more than one path. It is read-only: it reports duplicates but
 does not remove or otherwise modify any files.
 
-[![Test](https://github.com/mikegerber/git-annex-duplicates/actions/workflows/test.yml/badge.svg)](https://github.com/mikegerber/git-annex-duplicates/actions/workflows/test.yml)
+[![Tests](https://github.com/mikegerber/git-annex-duplicates/actions/workflows/tests.yml/badge.svg)](https://github.com/mikegerber/git-annex-duplicates/actions/workflows/tests.yml)
 
 
 ## Requirements
