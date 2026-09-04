@@ -1,8 +1,5 @@
-import subprocess
 import collections
-import os.path
-import re
-
+import subprocess
 from pathlib import Path
 
 import click
