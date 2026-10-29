@@ -1,7 +1,12 @@
 name: "Test nix-build"
+
 on:
   pull_request:
   push:
+
+permissions:
+  contents: read
+
 jobs:
   tests:
     runs-on: ubuntu-latest
