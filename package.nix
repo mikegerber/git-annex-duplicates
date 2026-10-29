@@ -10,12 +10,12 @@ let
 
   uv2nix-src = builtins.fetchGit {
     url = "https://github.com/pyproject-nix/uv2nix.git";
-    rev = "7f9c6b613d2e749e54854b1d60ab6a2192db889e";
+    rev = "c361746c7d630d98b972378290547c8d35542a7a";
   };
 
   build-system-pkgs-src = builtins.fetchGit {
     url = "https://github.com/pyproject-nix/build-system-pkgs.git";
-    rev = "150839ac67b5a34db56a55e8f6b7099a4e7878ab";
+    rev = "a17819c85163988e063806ffc4f6d2716bc8ead8";
   };
 
   pyproject-nix = import pyproject-nix-src {
