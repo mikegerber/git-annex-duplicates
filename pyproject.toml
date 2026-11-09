@@ -1,3 +1,7 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "git-annex-duplicates"
 version = "0.1.0"
@@ -9,8 +13,8 @@ dependencies = [
     "click>=8.5.0",
 ]
 
-[tool.uv]
-package = true
+[tool.setuptools]
+py-modules = ["git_annex_duplicates"]
 
 [dependency-groups]
 dev = [
