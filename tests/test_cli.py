@@ -58,12 +58,7 @@ def test_default_directory_and_duplicate_output(invoke_cli, monkeypatch, tmp_pat
 
     assert result.exit_code == 0
     assert result.output == (
-        "photos/first.jpg\n"
-        "backup/first.jpg\n"
-        "\n"
-        "one.txt\n"
-        "two.txt\n"
-        "\n"
+        "photos/first.jpg\nbackup/first.jpg\n\none.txt\ntwo.txt\n\n"
     )
     run.assert_called_once_with(
         [

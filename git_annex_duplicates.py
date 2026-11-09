@@ -72,8 +72,7 @@ def main(excludes, across, directories):
                 found_across = False
                 for directory in directories:
                     if any(
-                        resolve_parent(f).is_relative_to(directory)
-                        for f in files[k]
+                        resolve_parent(f).is_relative_to(directory) for f in files[k]
                     ):
                         count += 1
 
