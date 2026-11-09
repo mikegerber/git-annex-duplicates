@@ -5,7 +5,7 @@ from pathlib import Path
 import click
 
 
-def collect_files(exclude, directories):
+def collect_files(excludes, directories) -> dict[str, list[Path]]:
     # build command
     find_cmd = [
         "git",
@@ -16,7 +16,7 @@ def collect_files(exclude, directories):
         "--format=${key}:${file}\n",
         *directories,
     ]
-    for e in exclude:
+    for e in excludes:
         find_cmd += ["--exclude", e]
 
     # run
@@ -29,7 +29,7 @@ def collect_files(exclude, directories):
             continue
         key, file = l.split(":", maxsplit=1)
 
-        files[key].append(file)
+        files[key].append(Path(file))
 
     return files
 
@@ -39,12 +39,12 @@ def print_files(fs):
         print(f)
 
 
-def resolve_parent(p):
+def resolve_parent(p: Path) -> Path:
     return p.parent.resolve() / p.stem
 
 
 @click.command()
-@click.option("--exclude", multiple=True, default=[])
+@click.option("--exclude", "excludes", multiple=True, default=[])
 @click.option("--across", is_flag=True, default=False)
 @click.argument(
     "directories",
@@ -52,14 +52,13 @@ def resolve_parent(p):
     default=["."],
     type=click.Path(exists=True, file_okay=False, path_type=Path),
 )
-def main(exclude, across, directories):
-
+def main(excludes, across, directories):
     if across and len(directories) < 2:
         raise click.UsageError("--across requires at least two directories")
 
     directories = [d.resolve() for d in directories]  # for is_relative_to()
 
-    files = collect_files(exclude, directories)
+    files = collect_files(excludes, directories)
 
     for k in files:
         if len(files[k]) > 1:
@@ -73,7 +72,7 @@ def main(exclude, across, directories):
                 found_across = False
                 for directory in directories:
                     if any(
-                        resolve_parent(Path(f)).is_relative_to(directory)
+                        resolve_parent(f).is_relative_to(directory)
                         for f in files[k]
                     ):
                         count += 1
