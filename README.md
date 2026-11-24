@@ -17,6 +17,16 @@ does not remove or otherwise modify any files.
 - [uv](https://docs.astral.sh/uv/) (recommended for installation)
 
 
+## Give it a quick try
+
+Thanks to the magic of `uvx`, you can try `git-annex-duplicates` without installing it first!
+
+```bash
+cd /path/to/your/git-annex-repo
+uvx https://github.com/mikegerber/git-annex-duplicates.git
+```
+
+
 ## Installation
 
 Install the command directly from the Git repository:
