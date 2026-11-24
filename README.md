@@ -22,13 +22,13 @@ does not remove or otherwise modify any files.
 Install the command directly from the Git repository:
 
 ```sh
-uv tool install "git+https://cvs.moegen-wir.net/mikegerber/git-annex-duplicates.git"
+uv tool install "git+https://github.com/mikegerber/git-annex-duplicates.git"
 ```
 
 Alternatively, run it from a checkout:
 
 ```sh
-git clone https://cvs.moegen-wir.net/mikegerber/git-annex-duplicates.git
+git clone https://github.com/mikegerber/git-annex-duplicates.git
 cd /path/to/your-git-annex-repo
 uv run --project /path/to/git-annex-duplicates git-annex-duplicates
 ```
